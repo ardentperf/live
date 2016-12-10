@@ -176,6 +176,7 @@ apt install -y gimp keepass2 keepassx printer-driver-hpijs secure-delete vlc xdo
 cd /root
 wget https://zoom.us/client/latest/zoom_amd64.deb
 dpkg -i zoom_amd64.deb
+rm -v zoom_amd64.deb
 
 # disable apt repositories
 for F in /etc/apt/sources.list /etc/apt/sources.list.d/*; do
