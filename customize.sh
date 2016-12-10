@@ -171,7 +171,7 @@ dpkg --add-architecture i386
 apt update
 
 # libxcb-xtest0 is prereq for zoom
-apt install -y gimp keepass2 keepassx printer-driver-hpijs secure-delete vlc xdotool google-chrome-stable git cubic skype libxcb-xtest0
+apt install -y gimp keepass2 keepassx printer-driver-hpijs secure-delete vlc xdotool google-chrome-stable git cubic syslinux-utils skype libxcb-xtest0
 
 cd /root
 wget https://zoom.us/client/latest/zoom_amd64.deb
