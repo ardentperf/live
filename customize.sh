@@ -2,6 +2,18 @@
 set -e   # quit on error
 set -x   # echo all commands
 
+# install security updates
+cat <<EOF >/etc/apt/sources.list
+deb http://security.ubuntu.com/ubuntu/ xenial-security main restricted universe multiverse
+EOF
+ 
+apt update
+
+apt remove --purge -y thunderbird firefox-locale-de firefox-locale-es firefox-locale-fr firefox-locale-it firefox-locale-pt firefox-locale-ru firefox-locale-zh-hans ubiquity $(dpkg-query -W --showformat='${Package}\n' | grep language-pack | egrep -v '\-en')
+
+apt dist-upgrade -y
+
+# setup all repositories for installing extra packages
 cat <<EOF >/etc/apt/sources.list
 deb http://archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse
 deb http://security.ubuntu.com/ubuntu/ xenial-security main restricted universe multiverse
@@ -158,16 +170,17 @@ EOF
 dpkg --add-architecture i386
 apt update
 
-apt remove --purge -y thunderbird firefox-locale-de firefox-locale-es firefox-locale-fr firefox-locale-it firefox-locale-pt firefox-locale-ru firefox-locale-zh-hans ubiquity $(dpkg-query -W --showformat='${Package}\n' | grep language-pack | egrep -v '\-en')
-
-apt upgrade -y
-
 # libxcb-xtest0 is prereq for zoom
 apt install -y gimp keepass2 keepassx printer-driver-hpijs secure-delete vlc xdotool google-chrome-stable git cubic skype libxcb-xtest0
 
 cd /root
 wget https://zoom.us/client/latest/zoom_amd64.deb
 dpkg -i zoom_amd64.deb
+
+# disable apt repositories
+for F in /etc/apt/sources.list /etc/apt/sources.list.d/*; do
+  sudo sed -i 's/^/# /' $F
+done
 
 # cleanup
 apt autoremove -y
