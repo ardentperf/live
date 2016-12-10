@@ -186,3 +186,5 @@ done
 apt autoremove -y
 apt clean -y
 
+# success!
+echo 'SUCCESS!'
