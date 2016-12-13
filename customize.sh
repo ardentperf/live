@@ -172,7 +172,8 @@ apt update
 
 # libxcb-xtest0 is prereq for zoom
 # syslinux-utils needed to make bootable iso from cubic output
-apt install -y gimp keepass2 printer-driver-hpijs secure-delete vlc xdotool google-chrome-stable git cubic syslinux-utils skype libxcb-xtest0 libdvd-pkg oathtool
+# mono-mcs needed to support keepass2 plugins
+apt install -y gimp keepass2 mono-mcs printer-driver-hpijs secure-delete vlc xdotool google-chrome-stable git cubic syslinux-utils skype libxcb-xtest0 libdvd-pkg oathtool
 
 cd /root
 wget https://zoom.us/client/latest/zoom_amd64.deb
