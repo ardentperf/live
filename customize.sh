@@ -13,12 +13,10 @@ apt remove --purge -y thunderbird firefox-locale-de firefox-locale-es firefox-lo
 
 apt dist-upgrade -y
 
-# setup all repositories for installing extra packages
+# enable main & security repositories for installing extra packages
 cat <<EOF >/etc/apt/sources.list
 deb http://archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse
 deb http://security.ubuntu.com/ubuntu/ xenial-security main restricted universe multiverse
-deb http://archive.ubuntu.com/ubuntu/ xenial-updates main restricted universe multiverse
-deb http://archive.canonical.com/ubuntu/ xenial partner
 EOF
 
 cat <<EOF >/etc/apt/sources.list.d/cubic-wizard-ubuntu-release-xenial.list
@@ -167,20 +165,34 @@ hq1TyPom3oEpHan9kU2aoli1MX8oTic=
 -----END PGP PUBLIC KEY BLOCK-----
 EOF
 
-dpkg --add-architecture i386
 apt update
 
 # libxcb-xtest0 is prereq for zoom
 # syslinux-utils needed to make bootable iso from cubic output
 # mono-mcs needed to support keepass2 plugins
-apt install -y gimp keepass2 mono-mcs printer-driver-hpijs secure-delete vlc xdotool google-chrome-stable git cubic syslinux-utils skype libxcb-xtest0 libdvd-pkg oathtool handbrake
+apt install -y gimp keepass2 mono-mcs printer-driver-hpijs secure-delete vlc xdotool google-chrome-stable git cubic syslinux-utils libxcb-xtest0 libdvd-pkg oathtool handbrake flashplugin-installer
 
+sudo dpkg-reconfigure libdvd-pkg
+
+# enable updates & partner repositories for installing skype
+cat <<EOF >/etc/apt/sources.list
+deb http://archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse
+deb http://security.ubuntu.com/ubuntu/ xenial-security main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu/ xenial-updates main restricted universe multiverse
+deb http://archive.canonical.com/ubuntu/ xenial partner
+EOF
+
+dpkg --add-architecture i386
+apt update
+apt install -y skype
+
+# install zoom
 cd /root
 wget https://zoom.us/client/latest/zoom_amd64.deb
 dpkg -i zoom_amd64.deb
 rm -v zoom_amd64.deb
 
-# disable apt repositories
+# disable all apt repositoriee
 for F in /etc/apt/sources.list /etc/apt/sources.list.d/*; do
   sudo sed -i 's/^/# /' $F
 done
