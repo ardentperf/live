@@ -1,0 +1,15 @@
+#
+# $ dpkg-query -W cubic
+# cubic	2016.04-15~201606141629~release~ubuntu16.04.1
+#
+--- /usr/share/cubic/utilities.py.1	2016-06-14 16:29:49.000000000 +0000
++++ /usr/share/cubic/utilities.py	2016-12-26 12:47:43.299882154 +0000
+@@ -1203,7 +1203,7 @@ def create_iso_image(thread):
+ 
+     logger.log_note('Creating the iso image')
+ 
+-    command = 'mkisofs -r -V "%s" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o "%s" .' % (
++    command = 'xorriso -as mkisofs -r -V "%s" -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin -eltorito-alt-boot -e boot/grub/efi.img -no-emul-boot -isohybrid-gpt-basdat -o "%s" .' % (
+         model.custom_iso_image_volume_id, model.custom_iso_image_filepath)
+     execute_asynchronous(thread, command, model.custom_live_iso_directory)
+ 
