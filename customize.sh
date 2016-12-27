@@ -23,6 +23,10 @@ cat <<EOF >/etc/apt/sources.list.d/cubic-wizard-ubuntu-release-xenial.list
 deb http://ppa.launchpad.net/cubic-wizard/release/ubuntu xenial main
 EOF
 
+cat <<EOF >/etc/apt/sources.list.d/webupd8team-ubuntu-java-xenial.list
+deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main
+EOF
+
 cat <<EOF >/etc/apt/sources.list.d/google-chrome.list
 deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
 EOF
@@ -165,6 +169,25 @@ hq1TyPom3oEpHan9kU2aoli1MX8oTic=
 -----END PGP PUBLIC KEY BLOCK-----
 EOF
 
+# webupd8 team (for java)
+cat <<EOF |apt-key add -
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v1
+
+mI0ES9/P3AEEAPbI+9BwCbJucuC78iUeOPKl/HjAXGV49FGat0PcwfDd69MVp6zU
+tIMbLgkUOxIlhiEkDmlYkwWVS8qy276hNg9YKZP37ut5+GPObuS6ZWLpwwNus5Ph
+LvqeGawVJ/obu7d7gM8mBWTgvk0ErnZDaqaU2OZtHataxbdeW8qH/9FJABEBAAG0
+DUxhdW5jaHBhZCBWTEOImwQQAQIABgUCVsN4HQAKCRAEC6TrO3+B2tJkA/jM3b7O
+ysTwptY7P75sOnIu+nXLPlzvja7qH7WnA23itdSker6JmyJrlQeQZu7b9x2nFesk
+NYlnhCp9mUGu/kbAKOx246pBtlaipkZdGmL4qXBi+bi6+5Rw2AGgKndhXdEjMxx6
+aDPq3dftFXS68HyBM3HFSJlf7SmMeJCkhNRwiLYEEwECACAFAkvfz9wCGwMGCwkI
+BwMCBBUCCAMEFgIDAQIeAQIXgAAKCRDCUYJI7qFIhucGBADQnY4V1xKT1Gz+3ERl
+y+nBb61BSqRx6KUgvTSEPasSVZVCtjY5MwghYU8T0h1PCx2qSir4nt3vpZL1luW2
+xTdyLkFCrbbIAZEHtmjXRgQu3VUcSkgHMdn46j/7N9qtZUcXQ0TOsZUJRANY/eHs
+BvUg1cBm3RnCeN4C8QZrir1CeA==
+=CziK
+EOF
+
 apt update
 
 # libxcb-xtest0 is prereq for zoom
@@ -172,7 +195,7 @@ apt update
 # xorriso & isolinux needed for cubic patch to make hybrid bootable usb
 # grub-efi-*-bin provides UEFI boot support in grub
 # mono-mcs needed to support keepass2 plugins
-apt install -y gimp keepass2 mono-mcs printer-driver-hpijs secure-delete vlc xdotool google-chrome-stable git cubic syslinux-utils libxcb-xtest0 libdvd-pkg oathtool handbrake flashplugin-installer xorriso isolinux grub-efi-amd64-bin grub-efi-ia32-bin
+apt install -y gimp keepass2 mono-mcs printer-driver-hpijs secure-delete vlc xdotool google-chrome-stable git cubic syslinux-utils libxcb-xtest0 libdvd-pkg oathtool handbrake flashplugin-installer xorriso isolinux grub-efi-amd64-bin grub-efi-ia32-bin oracle-java8-set-default
 
 sudo dpkg-reconfigure libdvd-pkg
 
