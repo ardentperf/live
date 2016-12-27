@@ -12,6 +12,7 @@ apt update
 apt remove --purge -y thunderbird firefox-locale-de firefox-locale-es firefox-locale-fr firefox-locale-it firefox-locale-pt firefox-locale-ru firefox-locale-zh-hans ubiquity $(dpkg-query -W --showformat='${Package}\n' | grep language-pack | egrep -v '\-en')
 
 apt dist-upgrade -y
+apt dist-upgrade -y
 
 # enable main & security repositories for installing extra packages
 cat <<EOF >/etc/apt/sources.list
@@ -193,9 +194,8 @@ apt update
 # libxcb-xtest0 is prereq for zoom
 # syslinux-utils needed to make bootable iso from cubic output
 # xorriso & isolinux needed for cubic patch to make hybrid bootable usb
-# grub-efi-*-bin provides UEFI boot support in grub
 # mono-mcs needed to support keepass2 plugins
-apt install -y gimp keepass2 mono-mcs printer-driver-hpijs secure-delete vlc xdotool google-chrome-stable git cubic syslinux-utils libxcb-xtest0 libdvd-pkg oathtool handbrake flashplugin-installer xorriso isolinux grub-efi-amd64-bin grub-efi-ia32-bin oracle-java8-set-default
+apt install -y gimp keepass2 mono-mcs printer-driver-hpijs secure-delete vlc xdotool google-chrome-stable git cubic syslinux-utils libxcb-xtest0 libdvd-pkg oathtool handbrake flashplugin-installer xorriso isolinux oracle-java8-set-default
 
 sudo dpkg-reconfigure libdvd-pkg
 
