@@ -169,8 +169,10 @@ apt update
 
 # libxcb-xtest0 is prereq for zoom
 # syslinux-utils needed to make bootable iso from cubic output
+# xorriso & isolinux needed for cubic patch to make hybrid bootable usb
+# grub-efi-*-bin provides UEFI boot support in grub
 # mono-mcs needed to support keepass2 plugins
-apt install -y gimp keepass2 mono-mcs printer-driver-hpijs secure-delete vlc xdotool google-chrome-stable git cubic syslinux-utils libxcb-xtest0 libdvd-pkg oathtool handbrake flashplugin-installer
+apt install -y gimp keepass2 mono-mcs printer-driver-hpijs secure-delete vlc xdotool google-chrome-stable git cubic syslinux-utils libxcb-xtest0 libdvd-pkg oathtool handbrake flashplugin-installer xorriso isolinux grub-efi-amd64-bin grub-efi-ia32-bin
 
 sudo dpkg-reconfigure libdvd-pkg
 
