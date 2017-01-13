@@ -195,7 +195,8 @@ apt update
 # syslinux-utils needed to make bootable iso from cubic output
 # xorriso & isolinux needed for cubic patch to make hybrid bootable usb
 # mono-mcs needed to support keepass2 plugins
-apt install -y gimp keepass2 mono-mcs printer-driver-hpijs secure-delete vlc xdotool google-chrome-stable git cubic syslinux-utils libxcb-xtest0 libdvd-pkg oathtool handbrake flashplugin-installer xorriso isolinux oracle-java8-set-default
+# ubuntu-restricted-extras adds restricted media codecs for firefox etc
+apt install -y gimp keepass2 mono-mcs printer-driver-hpijs secure-delete vlc xdotool google-chrome-stable git cubic syslinux-utils libxcb-xtest0 libdvd-pkg oathtool handbrake flashplugin-installer xorriso isolinux oracle-java8-set-default ubuntu-restricted-extras
 
 sudo dpkg-reconfigure libdvd-pkg
 
