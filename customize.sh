@@ -32,6 +32,10 @@ cat <<EOF >/etc/apt/sources.list.d/google-chrome.list
 deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
 EOF
 
+cat <<EOF >/etc/apt/sources.list.d/google-talk.list
+deb http://dl.google.com/linux/talkplugin/deb/ stable main
+EOF
+
 # Google Public (two keys)
 cat <<EOF |apt-key add -
 -----BEGIN PGP PUBLIC KEY BLOCK-----
@@ -196,7 +200,7 @@ apt update
 # xorriso & isolinux needed for cubic patch to make hybrid bootable usb
 # mono-mcs needed to support keepass2 plugins
 # ubuntu-restricted-extras adds restricted media codecs for firefox etc
-apt install -y gimp keepass2 mono-mcs printer-driver-hpijs secure-delete vlc xdotool google-chrome-stable git cubic syslinux-utils libxcb-xtest0 libdvd-pkg oathtool handbrake flashplugin-installer xorriso isolinux oracle-java8-set-default ubuntu-restricted-extras
+apt install -y gimp keepass2 mono-mcs printer-driver-hpijs secure-delete vlc xdotool google-chrome-stable git cubic syslinux-utils libxcb-xtest0 libdvd-pkg oathtool handbrake flashplugin-installer xorriso isolinux oracle-java8-set-default ubuntu-restricted-extras google-talkplugin
 
 sudo dpkg-reconfigure libdvd-pkg
 
