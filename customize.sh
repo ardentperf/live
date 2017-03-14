@@ -9,7 +9,12 @@ EOF
  
 apt update
 
-apt remove --purge -y thunderbird firefox-locale-de firefox-locale-es firefox-locale-fr firefox-locale-it firefox-locale-pt firefox-locale-ru firefox-locale-zh-hans ubiquity $(dpkg-query -W --showformat='${Package}\n' | grep language-pack | egrep -v '\-en')
+apt remove --purge -y \
+	thunderbird \
+	firefox-locale-de firefox-locale-es firefox-locale-fr firefox-locale-it firefox-locale-pt firefox-locale-ru firefox-locale-zh-hans \
+	ubiquity \
+	$(dpkg-query -W --showformat='${Package}\n' | grep language-pack | egrep -v '\-en') \
+;
 
 apt dist-upgrade -y
 apt dist-upgrade -y
@@ -200,9 +205,28 @@ apt update
 # xorriso & isolinux needed for cubic patch to make hybrid bootable usb
 # mono-mcs needed to support keepass2 plugins
 # ubuntu-restricted-extras adds restricted media codecs for firefox etc
-apt install -y gimp keepass2 mono-mcs printer-driver-hpijs secure-delete vlc xdotool google-chrome-stable git cubic syslinux-utils libxcb-xtest0 libdvd-pkg oathtool handbrake flashplugin-installer xorriso isolinux oracle-java8-set-default ubuntu-restricted-extras google-talkplugin
+# **NOTE: if there are problems here, try below w updates channel before filing bug
+apt install -y \
+	gimp \
+	keepass2 mono-mcs xdotool \
+	printer-driver-hpijs \
+	secure-delete \
+	google-chrome-stable \
+	git \
+	cubic syslinux-utils xorriso isolinux \
+	libxcb-xtest0 \
+	libdvd-pkg \
+	oathtool \
+	handbrake \
+	oracle-java8-set-default \
+	ubuntu-restricted-extras \
+	google-talkplugin \
+;
 
-sudo dpkg-reconfigure libdvd-pkg
+sudo dpkg-reconfigure \
+	libdvd-pkg \
+	ttf-mscorefonts-installer \
+;
 
 # enable updates & partner repositories for installing skype
 cat <<EOF >/etc/apt/sources.list
@@ -211,6 +235,12 @@ deb http://security.ubuntu.com/ubuntu/ xenial-security main restricted universe 
 deb http://archive.ubuntu.com/ubuntu/ xenial-updates main restricted universe multiverse
 deb http://archive.canonical.com/ubuntu/ xenial partner
 EOF
+
+apt update
+apt install -y \
+	adobe-flashplugin \
+	vlc \
+;
 
 dpkg --add-architecture i386
 apt update
