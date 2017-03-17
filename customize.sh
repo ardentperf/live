@@ -221,6 +221,7 @@ apt install -y \
 	oracle-java8-set-default \
 	ubuntu-restricted-extras \
 	google-talkplugin \
+	visualboyadvance-gtk \
 ;
 
 sudo dpkg-reconfigure \
