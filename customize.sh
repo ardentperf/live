@@ -201,9 +201,7 @@ EOF
 apt update
 
 # libxcb-xtest0 is prereq for zoom
-# syslinux-utils needed to make bootable iso from cubic output
-# xorriso & isolinux needed for cubic patch to make hybrid bootable usb
-# mono-mcs needed to support keepass2 plugins
+# keepass2: mono-mcs for plugins, xdotool for auto-type
 # ubuntu-restricted-extras adds restricted media codecs for firefox etc
 # **NOTE: if there are problems here, try below w updates channel before filing bug
 apt install -y \
@@ -221,7 +219,8 @@ apt install -y \
 	oracle-java8-set-default \
 	ubuntu-restricted-extras \
 	google-talkplugin \
-	visualboyadvance-gtk \
+	wireshark \
+	games-emulator zsnes visualboyadvance-gtk joy2key \
 ;
 
 sudo dpkg-reconfigure \
