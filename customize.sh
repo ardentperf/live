@@ -211,7 +211,7 @@ apt install -y \
 	secure-delete \
 	google-chrome-stable \
 	git \
-	cubic syslinux-utils xorriso isolinux \
+	cubic syslinux-utils \
 	libxcb-xtest0 \
 	libdvd-pkg \
 	oathtool \
@@ -219,13 +219,13 @@ apt install -y \
 	oracle-java8-set-default \
 	ubuntu-restricted-extras \
 	google-talkplugin \
+	virt-manager cpu-checker \
 	wireshark \
-	games-emulator zsnes visualboyadvance-gtk joy2key \
+	games-emulator visualboyadvance-gtk joy2key \
 ;
 
 sudo dpkg-reconfigure \
 	libdvd-pkg \
-	ttf-mscorefonts-installer \
 ;
 
 # enable updates & partner repositories for installing skype
@@ -238,13 +238,15 @@ EOF
 
 apt update
 apt install -y \
-	adobe-flashplugin \
 	vlc \
 ;
 
 dpkg --add-architecture i386
 apt update
-apt install -y skype
+apt install -y \
+	skype \
+	zsnes \
+;
 
 # install zoom
 cd /root
@@ -256,6 +258,12 @@ rm -v zoom_amd64.deb
 for F in /etc/apt/sources.list /etc/apt/sources.list.d/*; do
   sudo sed -i 's/^/# /' $F
 done
+
+# additional groups for live user
+echo 'ADD_EXTRA_GROUPS=1' >>/etc/adduser.conf
+echo EXTRA_GROUPS=\"dialout cdrom floppy audio video plugdev users \
+	wireshark \
+\" >>/etc/adduser.conf
 
 # cleanup
 apt autoremove -y
