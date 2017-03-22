@@ -269,6 +269,7 @@ apt install -y \
 	keepass2 mono-mcs xdotool \
 	printer-driver-hpijs \
 	secure-delete \
+	expect \
 	google-chrome-stable \
 	git \
 	cubic syslinux-utils \
