@@ -315,16 +315,22 @@ wget https://zoom.us/client/latest/zoom_amd64.deb
 dpkg -i zoom_amd64.deb
 rm -v zoom_amd64.deb
 
-# disable all apt repositoriee
-for F in /etc/apt/sources.list /etc/apt/sources.list.d/*; do
-  sudo sed -i 's/^/# /' $F
-done
-
 # additional groups for live user
 echo 'ADD_EXTRA_GROUPS=1' >>/etc/adduser.conf
 echo EXTRA_GROUPS=\"dialout cdrom floppy audio video plugdev users \
 	wireshark \
 \" >>/etc/adduser.conf
+
+# hide amazon icon from dash
+echo Hidden=true >>/usr/share/applications/ubuntu-amazon-default.desktop
+
+# disable ureadahead service (irrelevant on live system, clutters syslog w errors)
+systemctl disable ureadahead
+
+# disable all apt repositoriee
+for F in /etc/apt/sources.list /etc/apt/sources.list.d/*; do
+  sudo sed -i 's/^/# /' $F
+done
 
 # cleanup
 apt autoremove -y
