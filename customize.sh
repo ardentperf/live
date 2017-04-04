@@ -282,6 +282,7 @@ apt install -y \
 	google-talkplugin \
 	virtualbox-5.1 cpu-checker \
 	wireshark \
+	nethogs \
 	games-emulator visualboyadvance-gtk joy2key \
 ;
 
