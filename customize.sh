@@ -283,6 +283,8 @@ apt install -y \
 	virtualbox-5.1 cpu-checker \
 	wireshark \
 	nethogs \
+	iftop \
+	aircrack-ng \
 	games-emulator visualboyadvance-gtk joy2key \
 ;
 
