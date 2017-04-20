@@ -291,6 +291,14 @@ apt install -y \
 	ddrescueview \
 	forensics-all \
 	games-emulator visualboyadvance-gtk joy2key \
+	gcompris \
+	tuxpaint \
+	quadrapassel \
+	supertux \
+	extremetuxracer \
+	supertuxkart \
+	junior-programming \
+	junior-games-puzzle \
 ;
 
 sudo dpkg-reconfigure \
