@@ -285,6 +285,8 @@ apt install -y \
 	nethogs \
 	iftop \
 	aircrack-ng \
+	testdisk \
+	partimage \
 	games-emulator visualboyadvance-gtk joy2key \
 ;
 
