@@ -287,6 +287,9 @@ apt install -y \
 	aircrack-ng \
 	testdisk \
 	partimage \
+	gddrescue \
+	ddrescueview \
+	forensics-all \
 	games-emulator visualboyadvance-gtk joy2key \
 ;
 
