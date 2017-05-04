@@ -305,7 +305,7 @@ sudo dpkg-reconfigure \
 	libdvd-pkg \
 ;
 
-# enable updates & partner repositories for installing skype
+# enable updates & partner repositories for installing additional packages
 cat <<EOF >/etc/apt/sources.list
 deb http://archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse
 deb http://security.ubuntu.com/ubuntu/ xenial-security main restricted universe multiverse
@@ -313,8 +313,10 @@ deb http://archive.ubuntu.com/ubuntu/ xenial-updates main restricted universe mu
 deb http://archive.canonical.com/ubuntu/ xenial partner
 EOF
 
+# use partner flash player instead of auto-download so updates can run from usb w/o internet connection
 apt update
 apt install -y \
+	adobe-flashplugin \
 	vlc \
 ;
 
