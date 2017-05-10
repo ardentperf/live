@@ -290,6 +290,8 @@ apt install -y \
 	gddrescue \
 	ddrescueview \
 	forensics-all \
+	libimage-exiftool-perl \
+	outguess \
 	games-emulator visualboyadvance-gtk joy2key \
 	gcompris \
 	tuxpaint \
