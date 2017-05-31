@@ -263,6 +263,7 @@ apt update
 # libxcb-xtest0 is prereq for zoom
 # keepass2: mono-mcs for plugins, xdotool for auto-type
 # ubuntu-restricted-extras adds restricted media codecs for firefox etc
+# ansible: python-boto[3] for aws modules
 # **NOTE: if there are problems here, try below w updates channel before filing bug
 apt install -y \
 	gimp \
@@ -277,12 +278,18 @@ apt install -y \
 	ubuntu-restricted-extras \
 	google-talkplugin \
 	virtualbox-5.1 cpu-checker \
+	gedit-plugins gedit-developer-plugins \
 	\
+	ansible python-boto python-boto3 \
+	awscli \
 	secure-delete \
 	expect \
 	git \
 	oathtool \
 	outguess \
+	pinfo \
+	sshfs \
+	davfs2 \
 	\
 	wireshark \
 	nethogs \
