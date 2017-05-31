@@ -268,30 +268,34 @@ apt install -y \
 	gimp \
 	keepass2 mono-mcs xdotool \
 	printer-driver-hpijs \
-	secure-delete \
-	expect \
 	google-chrome-stable \
-	git \
 	cubic syslinux-utils \
 	libxcb-xtest0 \
 	libdvd-pkg \
-	oathtool \
 	handbrake \
 	oracle-java8-set-default \
 	ubuntu-restricted-extras \
 	google-talkplugin \
 	virtualbox-5.1 cpu-checker \
+	\
+	secure-delete \
+	expect \
+	git \
+	oathtool \
+	outguess \
+	\
 	wireshark \
 	nethogs \
 	iftop \
 	aircrack-ng \
+	\
 	testdisk \
 	partimage \
 	gddrescue \
 	ddrescueview \
 	forensics-all \
 	libimage-exiftool-perl \
-	outguess \
+	\
 	games-emulator visualboyadvance-gtk joy2key \
 	gcompris \
 	tuxpaint \
