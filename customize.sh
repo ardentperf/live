@@ -267,12 +267,14 @@ apt update
 # **NOTE: if there are problems here, try below w updates channel before filing bug
 apt install -y \
 	gimp \
+	pdftk \
 	keepass2 mono-mcs xdotool \
 	printer-driver-hpijs \
 	google-chrome-stable \
 	cubic syslinux-utils \
 	libxcb-xtest0 \
 	libdvd-pkg \
+	regionset \
 	handbrake \
 	oracle-java8-set-default \
 	ubuntu-restricted-extras \
@@ -280,7 +282,7 @@ apt install -y \
 	virtualbox-5.1 cpu-checker \
 	gedit-plugins gedit-developer-plugins \
 	\
-	ansible python-boto python-boto3 \
+	ansible python-boto python-boto3 python-apt \
 	awscli \
 	secure-delete \
 	expect \
@@ -290,6 +292,9 @@ apt install -y \
 	pinfo \
 	sshfs \
 	davfs2 \
+	openssh-server \
+	sysstat \
+	collectl \
 	\
 	wireshark \
 	nethogs \
@@ -312,6 +317,7 @@ apt install -y \
 	supertuxkart \
 	junior-programming \
 	junior-games-puzzle \
+	childsplay \
 ;
 
 sudo dpkg-reconfigure \
@@ -336,7 +342,6 @@ apt install -y \
 dpkg --add-architecture i386
 apt update
 apt install -y \
-	skype \
 	zsnes \
 ;
 
