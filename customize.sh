@@ -2,9 +2,11 @@
 set -e   # quit on error
 set -x   # echo all commands
 
+RELEASE=$(lsb_release -cs)
+
 # install security updates
 cat <<EOF >/etc/apt/sources.list
-deb http://security.ubuntu.com/ubuntu/ xenial-security main restricted universe multiverse
+deb http://security.ubuntu.com/ubuntu/ $RELEASE-security main restricted universe multiverse
 EOF
  
 apt update
@@ -21,20 +23,20 @@ apt dist-upgrade -y
 
 # enable main & security repositories for installing extra packages
 cat <<EOF >/etc/apt/sources.list
-deb http://archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse
-deb http://security.ubuntu.com/ubuntu/ xenial-security main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu/ $RELEASE main restricted universe multiverse
+deb http://security.ubuntu.com/ubuntu/ $RELEASE-security main restricted universe multiverse
 EOF
 
-cat <<EOF >/etc/apt/sources.list.d/cubic-wizard-ubuntu-release-xenial.list
-deb http://ppa.launchpad.net/cubic-wizard/release/ubuntu xenial main
+cat <<EOF >/etc/apt/sources.list.d/cubic-wizard-ubuntu-release-$RELEASE.list
+deb http://ppa.launchpad.net/cubic-wizard/release/ubuntu $RELEASE main
 EOF
 
-cat <<EOF >/etc/apt/sources.list.d/webupd8team-ubuntu-java-xenial.list
-deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main
+cat <<EOF >/etc/apt/sources.list.d/webupd8team-ubuntu-java-$RELEASE.list
+deb http://ppa.launchpad.net/webupd8team/java/ubuntu $RELEASE main
 EOF
 
 cat <<EOF >/etc/apt/sources.list.d/oracle-virtualbox.list
-deb http://download.virtualbox.org/virtualbox/debian xenial contrib
+deb http://download.virtualbox.org/virtualbox/debian $RELEASE contrib
 EOF
 
 cat <<EOF >/etc/apt/sources.list.d/google-chrome.list
@@ -267,7 +269,7 @@ apt update
 # **NOTE: if there are problems here, try below w updates channel before filing bug
 apt install -y \
 	gimp \
-	pdftk \
+	qpdf \
 	keepass2 mono-mcs xdotool \
 	printer-driver-hpijs \
 	google-chrome-stable \
@@ -296,7 +298,7 @@ apt install -y \
 	sysstat \
 	collectl \
 	\
-	wireshark \
+	wireshark-qt \
 	nethogs \
 	iftop \
 	aircrack-ng \
@@ -308,13 +310,12 @@ apt install -y \
 	forensics-all \
 	libimage-exiftool-perl \
 	\
-	games-emulator visualboyadvance-gtk joy2key \
+	games-emulator vbaexpress joy2key \
 	gcompris \
 	tuxpaint \
 	quadrapassel \
 	supertux \
 	extremetuxracer \
-	supertuxkart \
 	junior-programming \
 	junior-games-puzzle \
 	childsplay \
@@ -326,10 +327,10 @@ sudo dpkg-reconfigure \
 
 # enable updates & partner repositories for installing additional packages
 cat <<EOF >/etc/apt/sources.list
-deb http://archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse
-deb http://security.ubuntu.com/ubuntu/ xenial-security main restricted universe multiverse
-deb http://archive.ubuntu.com/ubuntu/ xenial-updates main restricted universe multiverse
-deb http://archive.canonical.com/ubuntu/ xenial partner
+deb http://archive.ubuntu.com/ubuntu/ $RELEASE main restricted universe multiverse
+deb http://security.ubuntu.com/ubuntu/ $RELEASE-security main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu/ $RELEASE-updates main restricted universe multiverse
+deb http://archive.canonical.com/ubuntu/ $RELEASE partner
 EOF
 
 # use partner flash player instead of auto-download so updates can run from usb w/o internet connection
